@@ -134,7 +134,7 @@ function startGame() {
           winningContainer.style.cssText =
             "position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center;";
           mainContainer.classList.add("finishContainer");
-          winningImage.src = "/images/Congratz-96.png";
+          winningImage.src = "images/Congratz-96.png";
           winningMsg.innerHTML = "Amazing Work You Won!";
           winningMsg.classList.add("winningSpan");
           scoreMsg.innerHTML = `You have full score : ${yourScore.innerHTML}`;
@@ -160,7 +160,7 @@ function startGame() {
         wrongName.classList.add("yourInput");
         rightName.classList.add("rightWord");
         let interjection = document.createElement("img");
-        interjection.src = "/images/interjection.png";
+        interjection.src = "images/interjection.png";
         finalMessage.style.cssText =
           "display : block; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center;";
         finalContainer.classList.add("finishContainer");

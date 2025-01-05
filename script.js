@@ -75,6 +75,7 @@ input.onpaste = function () {
 startButton.addEventListener("click", function () {
   selectLevel.disabled = true;
   this.remove();
+  input.style.cssText = "display : block";
   input.focus();
   GenWords();
 });

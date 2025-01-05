@@ -128,6 +128,7 @@ body {
   text-transform: capitalize;
   border-radius: 6px;
   caret-color: var(--main-color);
+  display: none;
 }
 .input:focus {
   outline: none;

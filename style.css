@@ -1,239 +1,241 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Space+Grotesk:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Space+Grotesk:wght@300..700&display=swap");
 :root {
-    --main-color: #2196f3;
-  }
-  
-  
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: "Open Sans", sans-serif;
-    color: #333333;
-  }
-  .game {
-    background-color: #e0f7fa;
-    min-height: 100vh;
-  }
-  .container {
-    margin: auto;
-      max-width: 900px;
-      background-color: white;
-      padding: 20px;
-      border-radius: 20px;
-      border: 1.5px solid var(--main-color);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-  }
-  .name {
-    background-color: var(--main-color);
-    padding: 20px;
-    text-align: center;
-    border-radius: 0 0 100% 100%;
-    height: 132px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 44px;
-  }
-  .name h1{
-    font-family: "Space Grotesk", serif;
-    font-weight: 700;
-    font-size: 52px;
-    color: white;
-    position: relative;
-  }
-  .name h1::after{
-    content: "";
-    position: absolute;
-    background-image: url(/images/Keyboard.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    right: -64px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-  }
-  .name h1::before{
-    content: "";
-    position: absolute;
-    background-image: url(/images/Keyboard.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    left: -64px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-  }
-  .message {
-    background-color: white;
-    border-radius: 6px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .message select{
-    padding: 20px;
-    border-radius: 6px;
-  }
-  .message select:focus{
-    outline: none;
-  }
-  .message span {
-    font-weight: bold;
-    color: #009688;
-  }
-  .message span::before {
-    content: "[ ";
-  }
-  .message span::after {
-    content: " ]";
-  }
-  .start {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #009688;
-    color: white;
-    padding: 20px;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-  .the-word {
-    text-align: center;
-    font-weight: bold;
-    font-size: 60px;
-    color: var(--main-color);
-    user-select: none;
-  }
-  
-  .the-word:empty{
-    display: none;
-  }
-  .input {
-    width: 100%;
-    display: block;
-    padding: 15px;
-    border: 3px solid var(--main-color);
-    font-size: 20px;
-    text-align: center;
-    text-transform: capitalize;
-    border-radius: 6px;
-    caret-color: var(--main-color);
-  }
-  .input:focus {
-    outline: none;
-  }
-  .upcoming-words {
-    background-color: white;
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .upcoming-words div {
-    background-color: var(--main-color);
-    color: white;
-    font-weight: bold;
-    margin: 4px;
-    padding: 10px;
-    border-radius: 6px;
-  }
-  .control {
-    display: flex;
-    justify-content: space-between;
-    background-color: #efefef;
-    border-radius: 6px;
-  }
-  .control .time, .control .score{
-    flex: 1;
-    padding: 20px;
-  }
-  .control .time{
-    position: relative;
-  }
-  .control .time .lineProgress{
-    content: "";
-    position: absolute;
-    background-color: var(--main-color);
-    width: 100%;
-    height: 4px;
-    bottom: 0;
-    left: 0;
-  }
-  .control .score{
-    display: flex;
-      align-items: center;
-      justify-content: right;
-      gap: 6px;
-  }
-  .control span {
-    font-weight: bold;
-    color: #009688;
-  }
-  .score span{
-    background-color: #5c7cfa;
-      width: 32px;
-      height: 32px;
-      border-radius: 100%;
-      color: white;
-      display: grid;
-      place-items: center;
-  }
-  .finish {
-    display: none;
-  }
-  .finishContainer{
-    background-color: white;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 600px;
-  }
-  p.good {
-    color: #009688;
-    font-size: 40px;
-    font-weight: 600;
-    text-align: center;
-  }
-  p.bad {
-    color: #ff6b6b;
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  span.winningSpan{
-    font-size: 28px;
-    font-weight: 700;
-    text-align: center;
-  }
+  --main-color: #2196f3;
+}
 
-  span.yourInput, span.rightWord{
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px;
-    min-width: 200px;
-    text-align: center;
-  }
-  span.rightWord{
-    background-color: #cbfffa;
-    border-bottom: 3px solid #009688;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333333;
+}
+.game {
+  background-color: #e0f7fa;
+  min-height: 100vh;
+}
+.container {
+  margin: auto;
+  max-width: 900px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1.5px solid var(--main-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.name {
+  background-color: var(--main-color);
+  padding: 20px;
+  text-align: center;
+  border-radius: 0 0 100% 100%;
+  height: 132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 44px;
+}
+.name h1 {
+  font-family: "Space Grotesk", serif;
+  font-weight: 700;
+  font-size: 52px;
+  color: white;
+  position: relative;
+}
+.name h1::after {
+  content: "";
+  position: absolute;
+  background-image: url(/images/Keyboard.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  right: -64px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+}
+.name h1::before {
+  content: "";
+  position: absolute;
+  background-image: url(/images/Keyboard.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  left: -64px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+}
+.message {
+  background-color: white;
+  border-radius: 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.message select {
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid black;
+}
+.message select:focus {
+  outline: none;
+}
+.message span {
+  font-weight: bold;
+  color: #009688;
+}
+.message span::before {
+  content: "[ ";
+}
+.message span::after {
+  content: " ]";
+}
+.start {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #009688;
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.the-word {
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  color: var(--main-color);
+  user-select: none;
+}
 
-  span.yourInput{
-    background-color: #ffd4d4;
-    border-bottom: 3px solid #ff6b6b;
-  }
+.the-word:empty {
+  display: none;
+}
+.input {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  border: 3px solid var(--main-color);
+  font-size: 20px;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: 6px;
+  caret-color: var(--main-color);
+}
+.input:focus {
+  outline: none;
+}
+.upcoming-words {
+  background-color: white;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.upcoming-words div {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  margin: 4px;
+  padding: 10px;
+  border-radius: 6px;
+}
+.control {
+  display: flex;
+  justify-content: space-between;
+  background-color: #efefef;
+  border-radius: 6px;
+}
+.control .time,
+.control .score {
+  flex: 1;
+  padding: 20px;
+}
+.control .time {
+  position: relative;
+}
+.control .time .lineProgress {
+  content: "";
+  position: absolute;
+  background-color: var(--main-color);
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+}
+.control .score {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 6px;
+}
+.control span {
+  font-weight: bold;
+  color: #009688;
+}
+.score span {
+  background-color: #5c7cfa;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+.finish {
+  display: none;
+}
+.finishContainer {
+  background-color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+p.good {
+  color: #009688;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+p.bad {
+  color: #ff6b6b;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+span.winningSpan {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+span.yourInput,
+span.rightWord {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  min-width: 200px;
+  text-align: center;
+}
+span.rightWord {
+  background-color: #cbfffa;
+  border-bottom: 3px solid #009688;
+}
+
+span.yourInput {
+  background-color: #ffd4d4;
+  border-bottom: 3px solid #ff6b6b;
+}

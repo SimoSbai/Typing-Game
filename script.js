@@ -176,6 +176,7 @@ function startGame() {
       }
       rePlay.onclick = function () {
         location.reload();
+        selectLevel.options[0];
       };
     }
   }, 1000);

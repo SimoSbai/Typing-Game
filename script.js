@@ -12,6 +12,7 @@ let total = document.querySelector(".score .total");
 let finalMessage = document.querySelector(".finish");
 let theContainer = document.querySelector(".container");
 
+// Words list for the game
 const words = [
   "Hello",
   "Programming",
@@ -45,16 +46,20 @@ const words = [
   "Playing",
 ];
 
+// Initialize default level (Easy) and its time
 currentLevel.append(selectLevel.options[0].textContent);
 secondsForEachLevel.append(7);
 timeLeft.append(7);
 
+// Update game level based on user selection
 selectLevel.oninput = function () {
   currentLevel.innerHTML = "";
   secondsForEachLevel.innerHTML = "";
   let yourCurrentLevel = selectLevel.options[selectLevel.selectedIndex];
   let yourCurrentLevelText = yourCurrentLevel.textContent;
   currentLevel.append(yourCurrentLevelText);
+
+  // Set time for each level
   yourCurrentLevelText === "Easy"
     ? secondsForEachLevel.append(7)
     : yourCurrentLevelText === "Medium"
@@ -68,10 +73,12 @@ selectLevel.oninput = function () {
 
 total.append(words.length);
 
+// Disable paste to prevent cheating
 input.onpaste = function () {
   return false;
 };
 
+// Start button event listener
 startButton.addEventListener("click", function () {
   selectLevel.disabled = true;
   this.remove();
@@ -80,12 +87,13 @@ startButton.addEventListener("click", function () {
   GenWords();
 });
 
+// Generate and display a random word
 function GenWords() {
-  let generateWords = words[Math.floor(Math.random() * words.length)];
+  let generateWords = words[Math.floor(Math.random() * words.length)]; // Randomly select a word
   let selectedIndex = words.indexOf(generateWords);
   theWord.innerHTML = "";
   theWord.append(generateWords);
-  words.splice(selectedIndex, 1);
+  words.splice(selectedIndex, 1); // Remove used word from list
   upComingWords.innerHTML = "";
   for (let i = 0; i < words.length; i++) {
     let div = document.createElement("div");
@@ -96,6 +104,7 @@ function GenWords() {
   startGame();
 }
 
+// Create replay button and final message container
 let finalContainer = document.createElement("div");
 let resultPara = document.createElement("p");
 let rePlay = document.createElement("button");
@@ -105,6 +114,7 @@ rePlay.innerHTML = "Replay Now";
 rePlay.style.cssText =
   "padding:16px 12px;cursor : pointer; background-color:#009688; color:white; border-radius:4px; border : none; font-size:18px; font-weight : 600; width: fit-content";
 
+// Main game logic
 function startGame() {
   let startCountingGame = setInterval(() => {
     timeLeft.textContent--;
@@ -122,6 +132,7 @@ function startGame() {
         input.value = "";
 
         if (words.length === 0) {
+          // Winning scenario
           input.disabled = true;
           timeLeft.textContent = 0;
           theWord.innerHTML = "";
@@ -153,6 +164,7 @@ function startGame() {
           GenWords();
         }
       } else {
+        // Losing scenario
         input.disabled = true;
         let wrongName = document.createElement("span");
         let rightName = document.createElement("span");
@@ -176,7 +188,7 @@ function startGame() {
         finalMessage.appendChild(finalContainer);
       }
       rePlay.onclick = function () {
-        location.reload();
+        location.reload(); // Restart game on replay click
       };
     }
   }, 1000);
